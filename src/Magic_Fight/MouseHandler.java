@@ -10,6 +10,10 @@ public class MouseHandler implements MouseListener {
     public void mouseClicked( MouseEvent e ) {
         if ( e.getButton() == MouseEvent.BUTTON1 ) {
             Var.mouseClick = true;
+
+            if (e.getSource().getClass() == Enemy.class) {
+
+            }
         }
 
         if (Var.mouseClick){
