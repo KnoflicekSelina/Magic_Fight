@@ -5,19 +5,17 @@ public class Main {
     }
 
     public static void main( String[] args ) {
+
+        // ButtonStart, ButtonStartGuide, ButtonGuide, ButtonExit -->
+        // inStartMenu, inStartGuide, inGame, inGameMenu, inGameGuide
         new ActionHandler();
 
-        new Enemy();
-
-        new KeyHandler();
-
-        new MouseHandler();
-
+        // Grundgerüst, Buttons --> Richtige Formatierung, Farbe und Position
         new Var();
 
+        // Fenster, Tastatur und Maus Listener
         new Gui();
-        new LabelStart();
-        new updating();
+
     }
 
 }

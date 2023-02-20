@@ -10,14 +10,11 @@ public class JPanelWithBackground extends JPanel {
 
     private Image backgroundImage;
 
-    // Some code to initialize the background image.
-    // Here, we use the constructor to load the image. This
-    // can vary depending on the use case of the panel.
-    public JPanelWithBackground( String fileName ) {
+    public JPanelWithBackground( String Background ) {
 
         try {
             // Background
-            backgroundImage = ImageIO.read( new File( fileName ) );
+            backgroundImage = ImageIO.read( new File( Background ) );
         }
 
         catch ( IOException e ) {
@@ -26,10 +23,12 @@ public class JPanelWithBackground extends JPanel {
         }
     }
 
-    public void paintComponent(Graphics g) {
+     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         // Draw the background image.
         g.drawImage(backgroundImage, 0, 0, this);
     }
+
+
 }
