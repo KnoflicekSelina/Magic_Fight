@@ -4,51 +4,61 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 
 public class Var {
     // Grundgerüst
     static JFrame jf1;
-    static int screenwidth = 1246; static int screenhigh = 790;
-    static int backgroundY = 0;
+    static int screenwidth = 1246; static int screenhigh = 795;
+    static int backgroundY = 0;  // <-- ???
 
-    static int enemy1;
+
+    static int Enemy;   // <-- ???
 
 
 
     // Leben und Punkte
-    static int live = 1000, maxLive = 1000;
     static int points = 0;
-    static int enemyLive1 = 1000, maxEnemyLive = 1000;
+
+    static LiveCounter enemyLive;
+    static LiveCounter playerLive;
 
 
     // Tastatur und Maus
     static boolean mouseClick = false;
-    static boolean inStartMenu = true ; // Menü das gestartet wird bevor gespielt wird
+
+
+    static boolean inStartMenu = true; // Menü das gestartet wird bevor gespielt wird
     static boolean inStartGuide = false; // Hilfe die geöffent werden kann bevor das Spiel startet
-    static boolean inGame = false ; // Im Spiel
-    static boolean inGameMenu = false ; // Im Spiel das Pausemenü wo Zurück zum Satart und Hilfe geöffnet werden kann
-    static boolean inGameGuide = false ; // Hilfe die im Pausemenü des Spiels geöffnet werden kann
+    static boolean inGame = false; // Im Spiel
+    static boolean inGameMenu = false; // Im Spiel das Pausemenü wo Zurück zum Satart und Hilfe geöffnet werden kann
+    static boolean inGameGuide = false; // Hilfe die im Pausemenü des Spiels geöffnet werden kann
 
 
+    // Panel die angezeigt werden
     static PanelStart panelStart;
     static PanelGame panelGame;
 
 
 
-    // Buttons
+    // Buttons im Menue
     static JButton buttonStart; // Startet das Spiel
     static JButton buttonStartGuide; // Öffnet Hilfe bevor das Spiel Startet
     static JButton buttonGuide; // Öffnet Hilfe im Pausemenü im Spiel
     static JButton buttonExit; // Schickt einen zum Startmenü zurück
 
 
-    //Eigene Angriffe
-    static JButton attackOne;
-    static JButton attackTwo;
-    static JButton attackThree;
+    //Player Angriffe
+    static PlayerAttackButton attackOne;
+    static PlayerAttackButton attackTwo;
+    static PlayerAttackButton attackThree;
 
+    static boolean victory = false;   // <-- ???
+    static boolean gameOver = false;   // <-- ???
+
+
+
+    // Anleitung Text im Start Guide
     static JTextArea StartGuide;
 
     public Var() {
@@ -134,11 +144,11 @@ public class Var {
 
             public void mouseEntered( MouseEvent evt ) {
                 Var.buttonExit.setBackground( new Color( 192, 0, 29  ) );
-                Var.buttonExit.setForeground(Color.BLACK);
+                Var.buttonExit.setForeground( Color.BLACK );
             }
             public void mouseExited( MouseEvent evt ) {
                 Var.buttonExit.setBackground( new Color( 147, 0, 29 ) );
-                Var.buttonExit.setForeground(Color.BLACK);
+                Var.buttonExit.setForeground( Color.BLACK );
             }
         });
     }

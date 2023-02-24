@@ -5,11 +5,7 @@ public class Main {
     }
 
     public static void main( String[] args ) {
-
-        // ButtonStart, ButtonStartGuide, ButtonGuide, ButtonExit -->
-        // inStartMenu, inStartGuide, inGame, inGameMenu, inGameGuide
-        new ActionHandler();
-
+        
         // Grundgerüst, Buttons --> Richtige Formatierung, Farbe und Position
         new Var();
 

@@ -8,12 +8,13 @@ import java.io.IOException;
 
 public class JPanelWithBackground extends JPanel {
 
+    // Hintergrundbild
     private Image backgroundImage;
 
     public JPanelWithBackground( String Background ) {
 
         try {
-            // Background
+            // Hintergrundbild
             backgroundImage = ImageIO.read( new File( Background ) );
         }
 
@@ -26,7 +27,7 @@ public class JPanelWithBackground extends JPanel {
      public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Draw the background image.
+        // Zeichnet das Hintergrundbild (Braucht man, dass es angezeigt wird)
         g.drawImage(backgroundImage, 0, 0, this);
     }
 

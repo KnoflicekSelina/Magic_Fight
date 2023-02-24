@@ -1,17 +1,38 @@
 package Magic_Fight;
 
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import static Magic_Fight.Var.attackOne;
+import static Magic_Fight.Var.attackThree;
 
 public class KeyHandler implements KeyListener {
     static int tempKeyhandler = 0 ;
 
-    public void keyTyped( KeyEvent e ) {
 
+    public void keyTyped( KeyEvent e ) {
     }
 
 
+
     public void keyPressed( KeyEvent e ) {
+        // Player Attacken 1, 2, 3 fuer zusaetzliche Tastaturauswahl
+        if ( e.getKeyCode() == KeyEvent.VK_1 ) {
+            Var.attackOne.setSelected( true );
+        }
+
+        if ( e.getKeyCode() == KeyEvent.VK_2  ) {
+            Var.attackTwo.setSelected( true );
+        }
+
+        if ( e.getKeyCode() == KeyEvent.VK_3  ) {
+            Var.attackThree.setSelected( true );
+        }
+
+
+
+        // ESC Tastatur eingabe für Pausemenue
         if ( tempKeyhandler == 0 ){
             // Pause Menue
             if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
@@ -43,38 +64,9 @@ public class KeyHandler implements KeyListener {
                 // pauseMenuT.tempPauseMenu = 0;
             }
         }
-
-
-        // Attacken 1, 2, 3
-        if ( e.getKeyCode() == KeyEvent.VK_1 ) {
-
-            //10 p Schaden, 5 Sec Abklingzeit
-
-        }
-
-        if ( e.getKeyCode() == KeyEvent.VK_2 ) {
-
-            //20 p Schaden, 10 Sec Abklingzeit
-        }
-
-        if ( e.getKeyCode() == KeyEvent.VK_3 ) {
-
-            //30 p Schaden, 15 Sec Abklingzeit
-        }
     }
 
     public void keyReleased( KeyEvent e ) {
-        // Attacken 1, 2, 3
-        if ( e.getKeyCode() == KeyEvent.VK_1 ) {
 
-        }
-
-        if ( e.getKeyCode() == KeyEvent.VK_2 ) {
-
-        }
-
-        if ( e.getKeyCode() == KeyEvent.VK_3 ) {
-
-        }
     }
 }

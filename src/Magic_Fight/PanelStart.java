@@ -6,6 +6,7 @@ import java.awt.*;
 
 public class PanelStart extends JPanelWithBackground {
 
+    // Start Menue
     private static final long serialVersionUID = 1L;
 
         public PanelStart() {

@@ -7,17 +7,24 @@ public class MouseHandler implements MouseListener {
     public MouseHandler() {
     }
 
+    // Mouse klick für Buttons
     public void mouseClicked( MouseEvent e ) {
         if ( e.getButton() == MouseEvent.BUTTON1 ) {
             Var.mouseClick = true;
 
-            if (e.getSource().getClass() == Enemy.class) {
-
+            // Gegner anklicken können und Leben abziehen
+            if ( e.getSource().getClass() == Enemy.class ) {
+                Var.mouseClick = true;
+                if( Var.attackOne.isSelected() ){
+                    Var.enemyLive.setLive(Var.enemyLive.getLive() - Var.attackOne.playerDamage );
+                }
+                if( Var.attackTwo.isSelected() ){
+                    Var.enemyLive.setLive(Var.enemyLive.getLive() - Var.attackTwo.playerDamage );
+                }
+                if( Var.attackThree.isSelected() ){
+                    Var.enemyLive.setLive(Var.enemyLive.getLive() - Var.attackThree.playerDamage );
+                }
             }
-        }
-
-        if (Var.mouseClick){
-
         }
 
     }

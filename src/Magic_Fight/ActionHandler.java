@@ -1,7 +1,5 @@
 package Magic_Fight;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +8,7 @@ public class ActionHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        // Menue Buttons
         if(e.getSource()==Var.buttonStart){
             Var.inStartMenu = false;
             Var.inStartGuide = false;
