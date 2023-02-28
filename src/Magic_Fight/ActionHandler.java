@@ -22,7 +22,7 @@ public class ActionHandler implements ActionListener {
             Var.StartGuide.setVisible( false );
 
             KeyHandler.tempKeyhandler = 0;
-            //pauseMenuT.tempPauseMenu = 0;
+
 
             if ( Var.panelGame == null ){
                 Var.panelGame = new PanelGame();
@@ -49,6 +49,8 @@ public class ActionHandler implements ActionListener {
             Var.jf1.requestFocus();
         }
 
+
+        // fuer Pause Menue ???
         else if(e.getSource()==Var.buttonGuide){
             Var.inStartMenu = false;
             Var.inStartGuide = true;

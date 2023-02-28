@@ -18,7 +18,7 @@ public class Var {
 
 
     // Leben und Punkte
-    static int points = 0;
+    static PointCounter points;
 
     static LiveCounter enemyLive;
     static LiveCounter playerLive;
@@ -53,8 +53,16 @@ public class Var {
     static PlayerAttackButton attackTwo;
     static PlayerAttackButton attackThree;
 
-    static boolean victory = false;   // <-- ???
-    static boolean gameOver = false;   // <-- ???
+
+    // Gegner Angriffe
+    static EnemyAttack enemyAttackOne;
+    static EnemyAttack enemyAttackTwo;
+    static EnemyAttack enemyAttackThree;
+
+
+    //Gewonnen, Verloren
+    static boolean victory = false;   // <-- ??? in ActionHandler?
+    static boolean gameOver = false;   // <-- ??? in ActionHandler?
 
 
 

@@ -1,5 +1,7 @@
 package Magic_Fight;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.*;
 
 // import static Magic_Fight.pauseMenuT.tempPauseMenu;
@@ -12,8 +14,14 @@ public class PanelGame extends JPanelWithBackground {
 
     public PanelGame() {
         // Hintergrundbild Game
-        super("png/DO-IT_Hintergrund_Klein_1.png");
+        super("png/DO-IT_Hintergrund.png");
 
+        //JPanel colorPanel = new JPanel();
+        //colorPanel.setBackground(Color.DARK_GRAY);
+        //colorPanel.setOpaque(true);
+        //colorPanel.setVisible(true);
+        //colorPanel.setBounds( 0 , 0 , Var.screenwidth , Var.screenhigh );
+        //this.add(colorPanel, JLayeredPane.DEFAULT_LAYER- 1 );
             // Hintergrund hinter dem Bild
             this.setBackground( Color.DARK_GRAY );
             Var.jf1.getContentPane().add( this );
@@ -76,6 +84,13 @@ public class PanelGame extends JPanelWithBackground {
 
 
             // Leben Counter darstellung
+            Var.playerLive = new LiveCounter( 1000 );
+            Var.playerLive.setFont( new Font( "Arial", Font.BOLD, 20));
+            Var.playerLive.setForeground( Color.WHITE );
+            Var.playerLive.setBounds( 30, 680, 300, 100 );
+            Var.playerLive.setVisible( true );
+            this.add( Var.playerLive );
+
             Var.enemyLive = new LiveCounter( 1000 );
             Var.enemyLive.setFont( new Font( "Arial", Font.BOLD, 20));
             Var.enemyLive.setForeground( Color.WHITE );
@@ -84,17 +99,35 @@ public class PanelGame extends JPanelWithBackground {
             this.add( Var.enemyLive );
 
 
-            Var.playerLive = new LiveCounter( 1000 );
-            Var.playerLive.setFont( new Font( "Arial", Font.BOLD, 20));
-            Var.playerLive.setForeground( Color.WHITE );
-            Var.playerLive.setBounds( 111, 680, 300, 100 );
-            Var.playerLive.setVisible( true );
-            this.add( Var.playerLive );
+
+
+            // Gegnerische Angriffe
+            Var.enemyAttackOne = new EnemyAttack("png/Enemy_Attack_One.png", 90, 90, 8000, 30, 10 );
+            this.add( Var.enemyAttackOne,  JLayeredPane.PALETTE_LAYER);
+            Var.enemyAttackOne.setRandomLocation();
+
+
+
+            Var.enemyAttackTwo = new EnemyAttack("png/Enemy_Attack_Two.png", 75, 75, 6500, 20, 20 );
+            this.add( Var.enemyAttackTwo, JLayeredPane.PALETTE_LAYER);
+            Var.enemyAttackTwo.setRandomLocation();
+
+
+
+            Var.enemyAttackThree= new EnemyAttack("png/Enemy_Attack_Three.png", 60, 60, 5000, 10, 30 );
+            this.add( Var.enemyAttackThree, JLayeredPane.PALETTE_LAYER);
+            Var.enemyAttackThree.setRandomLocation();
 
 
 
 
-
+            // Punkte Anzeige
+            Var.points = new PointCounter(  0 );
+            Var.points.setFont( new Font( "Arial", Font.BOLD, 20));
+            Var.points.setForeground( Color.WHITE );
+            Var.points.setBounds( 300, 680, 300, 100 );
+            Var.points.setVisible( true );
+            this.add( Var.points );
 
 
             // Buttons im Spiel Menue

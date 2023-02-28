@@ -22,11 +22,11 @@ public class KeyHandler implements KeyListener {
             Var.attackOne.setSelected( true );
         }
 
-        if ( e.getKeyCode() == KeyEvent.VK_2  ) {
+        if ( e.getKeyCode() == KeyEvent.VK_2 ) {
             Var.attackTwo.setSelected( true );
         }
 
-        if ( e.getKeyCode() == KeyEvent.VK_3  ) {
+        if ( e.getKeyCode() == KeyEvent.VK_3 ) {
             Var.attackThree.setSelected( true );
         }
 

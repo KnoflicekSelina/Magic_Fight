@@ -15,16 +15,17 @@ public class MouseHandler implements MouseListener {
             // Gegner anklicken können und Leben abziehen
             if ( e.getSource().getClass() == Enemy.class ) {
                 Var.mouseClick = true;
-                if( Var.attackOne.isSelected() ){
+                if( Var.attackOne.isSelected() ) {
                     Var.enemyLive.setLive(Var.enemyLive.getLive() - Var.attackOne.playerDamage );
                 }
-                if( Var.attackTwo.isSelected() ){
+                if( Var.attackTwo.isSelected() ) {
                     Var.enemyLive.setLive(Var.enemyLive.getLive() - Var.attackTwo.playerDamage );
                 }
-                if( Var.attackThree.isSelected() ){
+                if( Var.attackThree.isSelected() ) {
                     Var.enemyLive.setLive(Var.enemyLive.getLive() - Var.attackThree.playerDamage );
                 }
             }
+
         }
 
     }
