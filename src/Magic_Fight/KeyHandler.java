@@ -19,51 +19,23 @@ public class KeyHandler implements KeyListener {
     public void keyPressed( KeyEvent e ) {
         // Player Attacken 1, 2, 3 fuer zusaetzliche Tastaturauswahl
         if ( e.getKeyCode() == KeyEvent.VK_1 ) {
-            Var.attackOne.setSelected( true );
+            if ( Var.attackOne.isEnabled() ){
+                Var.attackOne.setSelected( true );
+            }
         }
 
         if ( e.getKeyCode() == KeyEvent.VK_2 ) {
-            Var.attackTwo.setSelected( true );
+            if ( Var.attackTwo.isEnabled() ){
+                Var.attackTwo.setSelected( true );
+            }
         }
 
         if ( e.getKeyCode() == KeyEvent.VK_3 ) {
-            Var.attackThree.setSelected( true );
-        }
-
-
-
-        // ESC Tastatur eingabe für Pausemenue
-        if ( tempKeyhandler == 0 ){
-            // Pause Menue
-            if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-                Var.inStartMenu = false;
-                Var.inGame = false;
-                Var.inGameGuide = false;
-                Var.inStartGuide = false;
-                Var.inGameMenu = true;
-                Var.buttonStart.setVisible( false );
-                Var.buttonStartGuide.setVisible( false );
-                Var.buttonGuide.setVisible( true );
-                Var.buttonExit.setVisible( true );
-                tempKeyhandler ++;
-
+            if ( Var.attackThree.isEnabled() ){
+                Var.attackThree.setSelected( true );
             }
         }
-        else if (tempKeyhandler == 1) {
-            if( e.getKeyCode() == KeyEvent.VK_ESCAPE ) {
-                Var.inStartMenu = false;
-                Var.inGame = true;
-                Var.inGameGuide = false;
-                Var.inGameMenu = false;
-                Var.inStartGuide = false;
-                Var.buttonStart.setVisible( false );
-                Var.buttonStartGuide.setVisible( false );
-                Var.buttonGuide.setVisible( false );
-                Var.buttonExit.setVisible( false );
-                tempKeyhandler --;
-                // pauseMenuT.tempPauseMenu = 0;
-            }
-        }
+
     }
 
     public void keyReleased( KeyEvent e ) {

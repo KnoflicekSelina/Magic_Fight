@@ -13,11 +13,8 @@ public class ActionHandler implements ActionListener {
             Var.inStartMenu = false;
             Var.inStartGuide = false;
             Var.inGame = true;
-            Var.inGameMenu = false;
-            Var.inGameGuide = false;
             Var.buttonStart.setVisible( false );
             Var.buttonStartGuide.setVisible( false );
-            Var.buttonGuide.setVisible( false );
             Var.buttonExit.setVisible( false );
             Var.StartGuide.setVisible( false );
 
@@ -29,62 +26,58 @@ public class ActionHandler implements ActionListener {
             }
             Var.panelStart.setVisible( false );
             Var.panelGame.requestFocus();
-            Var.jf1.requestFocus();
+            Var.JFrame1.requestFocus();
         }
 
         else if(e.getSource()==Var.buttonStartGuide){
             Var.inStartMenu = false;
             Var.inStartGuide = true;
             Var.inGame = false;
-            Var.inGameMenu = false;
-            Var.inGameGuide = false;
             Var.buttonStart.setVisible( true );
             Var.buttonStartGuide.setVisible( false );
-            Var.buttonGuide.setVisible( false );
             Var.buttonExit.setVisible( false );
             Var.StartGuide.setVisible( true );
 
             KeyHandler.tempKeyhandler = 1;
 
-            Var.jf1.requestFocus();
+            Var.JFrame1.requestFocus();
         }
 
-
-        // fuer Pause Menue ???
-        else if(e.getSource()==Var.buttonGuide){
-            Var.inStartMenu = false;
-            Var.inStartGuide = true;
-            Var.inGame = false;
-            Var.inGameMenu = false;
-            Var.inGameGuide = false;
-            Var.buttonStart.setVisible( false );
-            Var.buttonStartGuide.setVisible( false );
-            Var.buttonGuide.setVisible( false );
-            Var.buttonExit.setVisible( true );
-
-            KeyHandler.tempKeyhandler = 1;
-            //pauseMenuT.tempPauseMenu = 1;
-
-            Var.jf1.requestFocus();
-        }
 
         else if(e.getSource()==Var.buttonExit){
             Var.inStartMenu = true;
             Var.inStartGuide = false;
             Var.inGame = false;
-            Var.inGameMenu = false;
-            Var.inGameGuide = false;
             Var.buttonStart.setVisible( true );
             Var.buttonStartGuide.setVisible( true );
-            Var.buttonGuide.setVisible( false );
             Var.buttonExit.setVisible( false );
 
             KeyHandler.tempKeyhandler = 1;
             // pauseMenuT.tempPauseMenu = 0;
 
-            Var.jf1.requestFocus();
+            Var.JFrame1.requestFocus();
 
         }
+
+        // Player Angriffe
+        else if( e.getSource().getClass() == PlayerAttackButton.class ) {
+
+            if ( e.getSource() != Var.attackOne )  {
+                Var.attackOne.setSelected( false );
+            }
+
+            if ( e.getSource() != Var.attackTwo ) {
+                Var.attackTwo.setSelected( false );
+            }
+
+            if ( e.getSource() != Var.attackThree ) {
+                Var.attackThree.setSelected( false );
+            }
+
+        }
+
+
+
 
     }
 }

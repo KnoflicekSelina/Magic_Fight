@@ -6,13 +6,13 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class JPanelWithBackground extends JPanel {
+public class JPanelWithBackground extends JLayeredPane {
 
     // Hintergrundbild
     private Image backgroundImage;
 
     public JPanelWithBackground( String Background ) {
-
+        super();
         try {
             // Hintergrundbild
             backgroundImage = ImageIO.read( new File( Background ) );

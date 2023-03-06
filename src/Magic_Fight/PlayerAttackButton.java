@@ -1,6 +1,8 @@
 package Magic_Fight;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PlayerAttackButton extends JToggleButton {
 
@@ -12,20 +14,27 @@ public class PlayerAttackButton extends JToggleButton {
     public int cooldown = 5000;
     int playerDamage = 10;
 
+    Timer cooldownTimer;
+
 
     protected static int count = 0;
 
     // Groesse und Position der Player Attacks und das Icon Bild
     public PlayerAttackButton(String filename, int cooldown, int playerDamage ) {
         super();
+        ImageIcon playerAttackIcon = new ImageIcon ( filename );
+        this.setIcon( playerAttackIcon );
+
         this.cooldown = cooldown;
         this.playerDamage = playerDamage;
-        ImageIcon playerAttackIcon = new ImageIcon ( filename );
+
         this.setBounds(Var.screenwidth / 2 - ( 3 * width / 2 )  + count * width, 704, width, height );
-        this.setVisible( true );
-        this.setIcon( playerAttackIcon );
+
         count++;
+
+        this.setVisible( true );
         this.addKeyListener( new KeyHandler() );
+
     }
 
     int getCooldown() {

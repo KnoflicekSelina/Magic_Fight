@@ -1,28 +1,27 @@
 package Magic_Fight;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Gui {
     public Gui() {
+
         //Fenster
-        Var.jf1 = new JFrame();
-        Var.jf1.setSize( Var.screenwidth, Var.screenhigh );
-        Var.jf1.setLocationRelativeTo( ( Component ) null );
-        Var.jf1.setLayout( ( LayoutManager ) null );
-        Var.jf1.setTitle( "Magic Fight" );
-        Var.jf1.setResizable( false );
-        Var.jf1.setDefaultCloseOperation( 3 );
-        Var.jf1.requestFocus();
+        Var.JFrame1 = new JFrame();
+        Var.JFrame1.setSize( Var.screenwidth, Var.screenheight);
+        Var.JFrame1.setLocationRelativeTo( ( Component ) null );
+        Var.JFrame1.setLayout( ( LayoutManager ) null );
+        Var.JFrame1.setTitle( "Magic Fight" );
+        Var.JFrame1.setResizable( false );
+        Var.JFrame1.setDefaultCloseOperation( 3 );
+        Var.JFrame1.requestFocus();
 
         // Tastatur und Maus Listener
-        Var.jf1.addKeyListener( new KeyHandler() );
-        Var.jf1.addMouseListener( new MouseHandler() );
+        Var.JFrame1.addKeyListener( new KeyHandler() );
+        Var.JFrame1.addMouseListener( new MouseHandler() );
 
         // Sichtbarkeit Fenster
-        Var.jf1.setVisible( true );
+        Var.JFrame1.setVisible( true );
 
         Var.panelStart = new PanelStart();
 

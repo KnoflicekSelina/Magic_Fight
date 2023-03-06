@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -17,7 +16,7 @@ public class EnemyAttack extends JLabel{
     Timer damageTimer;
 
 
-    public EnemyAttack(String filename, int width, int height, int castTime, int enemyDamage, int points ) {
+    public EnemyAttack( String filename, int width, int height, int castTime, int enemyDamage, int points ) {
         super();
         ImageIcon enemyAttackIcon = new ImageIcon( filename );
 
@@ -28,23 +27,32 @@ public class EnemyAttack extends JLabel{
         this.enemyDamage = enemyDamage;
         this.points = points;
 
-        this.setSize(width, height);
-
+        this.setSize( width, height );
         this.setVisible( true );
-
         this.addMouseListener( new MouseHandler() );
 
         damageTimer = new Timer( castTime, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed( ActionEvent e ) {
                 // Schadensberechnung
                 Var.playerLive.setLive( Var.playerLive.getLive() - enemyDamage);
                 reset();
 
-                // Verloren abfrage
-                if ( Var.playerLive.getLive() == 0 ) {
-                    Var.gameOver = true;
-                    System.out.println( " Verloren ");
+                if ( Var.playerLive.getLive() <= 0 ){
+
+                    Var.endeZeit = System.currentTimeMillis();
+                    Var.zeitdifferenz = Var.endeZeit - Var.startZeit ;
+
+                    int Sekunden = (int) (Var.zeitdifferenz / 1000) % 60;
+                    int Minuten = (int) ((Var.zeitdifferenz / (1000*60)) % 60);
+                    int Stunden = (int) ((Var.zeitdifferenz / (1000*60*60)) % 24);
+
+                    if ( Var.panelGameOver == null ){
+                        Var.panelGameOver = new GameOver( "<html> VERLOREN <br>"  + "Erreichte Punkte: " + Var.points.getPoints() + "<br> Benötigte Zeit: " + Stunden + " Stunden " + Minuten + " Minuten "+ Sekunden + " Sekunden" );// --> plus Erreichte Punkte, plus Zeit
+                    }
+                    Var.panelGame.setVisible( false );
+                    Var.panelGameOver.requestFocus();
+                    Var.JFrame1.requestFocus();
                 }
             }
         });
@@ -53,7 +61,7 @@ public class EnemyAttack extends JLabel{
     }
 
     public void setRandomLocation() {
-        setLocation(ThreadLocalRandom.current().nextInt(80, Var.screenwidth - 150 ), ThreadLocalRandom.current().nextInt(80, Var.screenhigh - 250 ));
+        setLocation(ThreadLocalRandom.current().nextInt(80, Var.screenwidth - 150 ), ThreadLocalRandom.current().nextInt(80, Var.screenheight - 250 ));
 
     }
 
@@ -66,8 +74,6 @@ public class EnemyAttack extends JLabel{
                setVisible( true );
                damageTimer.restart();
             }
-
-
         });
 
         timer.setRepeats(false);

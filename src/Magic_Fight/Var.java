@@ -8,20 +8,20 @@ import java.awt.event.MouseEvent;
 
 public class Var {
     // Grundgerüst
-    static JFrame jf1;
-    static int screenwidth = 1246; static int screenhigh = 795;
-    static int backgroundY = 0;  // <-- ???
+    static JFrame JFrame1;
+    static int screenwidth = 1246; static int screenheight = 795;
 
-
-    static int Enemy;   // <-- ???
-
+    // Fuer die Zeitberechnunf, wie Lange das Spiel im PanelGame gelaufen ist
+    static long startZeit;
+    static long endeZeit;
+    static long zeitdifferenz;
 
 
     // Leben und Punkte
     static PointCounter points;
-
     static LiveCounter enemyLive;
     static LiveCounter playerLive;
+
 
 
     // Tastatur und Maus
@@ -31,20 +31,21 @@ public class Var {
     static boolean inStartMenu = true; // Menü das gestartet wird bevor gespielt wird
     static boolean inStartGuide = false; // Hilfe die geöffent werden kann bevor das Spiel startet
     static boolean inGame = false; // Im Spiel
-    static boolean inGameMenu = false; // Im Spiel das Pausemenü wo Zurück zum Satart und Hilfe geöffnet werden kann
-    static boolean inGameGuide = false; // Hilfe die im Pausemenü des Spiels geöffnet werden kann
+
 
 
     // Panel die angezeigt werden
     static PanelStart panelStart;
     static PanelGame panelGame;
-
+    static GameOver panelGameOver;
 
 
     // Buttons im Menue
     static JButton buttonStart; // Startet das Spiel
     static JButton buttonStartGuide; // Öffnet Hilfe bevor das Spiel Startet
-    static JButton buttonGuide; // Öffnet Hilfe im Pausemenü im Spiel
+
+
+    // Buttons im Pausemenue
     static JButton buttonExit; // Schickt einen zum Startmenü zurück
 
 
@@ -61,15 +62,14 @@ public class Var {
 
 
     //Gewonnen, Verloren
-    static boolean victory = false;   // <-- ??? in ActionHandler?
-    static boolean gameOver = false;   // <-- ??? in ActionHandler?
-
+    static boolean gameOver = false;
 
 
     // Anleitung Text im Start Guide
     static JTextArea StartGuide;
 
     public Var() {
+
         // Buttons --> Richtige Formatierung, Farbe und Position
         Var.buttonStart = ( new JButton("Start" ) );
         Var.buttonStart.setSize( 300, 50 );
@@ -87,12 +87,12 @@ public class Var {
                 Var.buttonStart.setBackground( new Color(192, 0, 29 ) );
                 Var.buttonStart.setForeground( Color.BLACK );
             }
-
             public void mouseExited( MouseEvent evt ) {
                 Var.buttonStart.setBackground( new Color(147, 0, 29 ) );
                 Var.buttonStart.setForeground( Color.BLACK );
             }
         });
+
         Var.buttonStartGuide = ( new JButton("Anleitung" ) );
         Var.buttonStartGuide.setSize( 300, 50 );
         Var.buttonStartGuide.setLocation( 465, 350 );
@@ -103,7 +103,6 @@ public class Var {
         Var.buttonStartGuide.setBorder( null );
         Var.buttonStartGuide.setFocusPainted( false );
         Var.buttonStartGuide.setVisible( true );
-
         Var.buttonStartGuide.addMouseListener( new MouseAdapter() {
 
             public void mouseEntered ( MouseEvent evt ){
@@ -114,30 +113,10 @@ public class Var {
                 Var.buttonStartGuide.setBackground( new Color(147, 0, 29 ) );
                 Var.buttonStartGuide.setForeground( Color.BLACK );
             }
-
-
         });
-        Var.buttonGuide = ( new JButton("Anleitung" ) );
-        Var.buttonGuide.setSize( 300, 50 );
-        Var.buttonGuide.setLocation( 465, 350 );
-        Var.buttonGuide.addActionListener( new ActionHandler() );
-        Var.buttonGuide.setBackground( new Color(147, 0, 29 ) );
-        Var.buttonGuide.setFont( new Font("Arial", Font.BOLD, 30 ) );
-        Var.buttonGuide.setForeground( Color.BLACK );
-        Var.buttonGuide.setBorder( null );
-        Var.buttonGuide.setFocusPainted( false );
-        Var.buttonGuide.setVisible( true );
-        Var.buttonGuide.addMouseListener( new MouseAdapter() {
 
-            public void mouseEntered ( MouseEvent evt ){
-                Var.buttonGuide.setBackground( new Color(192, 0, 29 ) );
-                Var.buttonGuide.setForeground( Color.BLACK );
-            }
-            public void mouseExited ( MouseEvent evt ){
-                Var.buttonGuide.setBackground( new Color(147, 0, 29 ) );
-                Var.buttonGuide.setForeground( Color.BLACK );
-            }
-        });
+        // Button für das Spiel Ende, noch nicht eingefügt, kommt noch wenn zeit ist.
+
         Var.buttonExit = ( new JButton("Zurück zum Hauptmenü" ) );
         Var.buttonExit.setSize( 300, 50 );
         Var.buttonExit.setLocation( 465, 450 );
@@ -159,5 +138,6 @@ public class Var {
                 Var.buttonExit.setForeground( Color.BLACK );
             }
         });
+
     }
 }
